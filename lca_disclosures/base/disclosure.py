@@ -1,6 +1,5 @@
 import json
 import os
-import re
 
 from scipy.sparse import coo_matrix, eye
 from scipy.sparse.linalg import spsolve

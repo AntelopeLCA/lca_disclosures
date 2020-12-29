@@ -2,59 +2,28 @@
 To create the wheel run - python setup.py bdist_wheel
 """
 
-from setuptools import setup
-import os
-
-packages = []
-root_dir = os.path.dirname(__file__)
-if root_dir:
-    os.chdir(root_dir)
-
-for dirpath, dirnames, filenames in os.walk('lca_disclosures'):
-    # Ignore dirnames that start with '.'
-    if '__init__.py' in filenames:
-        pkg = dirpath.replace(os.path.sep, '.')
-        if os.path.altsep:
-            pkg = pkg.replace(os.path.altsep, '.')
-        packages.append(pkg)
+from setuptools import setup, find_packages
 
 
-def package_files(directory):
-    paths = []
-    for (path, directories, fnames) in os.walk(directory):
-        for filename in fnames:
-            paths.append(os.path.join('..', path, filename))
-    return paths
-
-
-my_package_files = []
-# my_package_files.extend(package_files(os.path.join('lcopt', 'assets')))
-# my_package_files.extend(package_files(os.path.join('lcopt', 'static')))
-# my_package_files.extend(package_files(os.path.join('lcopt', 'templates')))
-# my_package_files.extend(package_files(os.path.join('lcopt', 'bin')))
-# print(my_package_files)
 
 setup(
     name='lca_disclosures',
-    version="0.1.0",
-    packages=packages,
-    author="P. James Joyce",
-    author_email="pjamesjoyce@gmail.com",
+    version="0.2.0",
+    packages=find_packages(),
+    author="Brandon Kuczenski",
+    author_email="bkuczenski@ucsb.edu",
     license=open('LICENSE').read(),
-    package_data={'lca_disclosures': my_package_files},
     #entry_points = {
     #   'console_scripts': [
     #   ]
     #},
     #install_requires=[
     #],
-    include_package_data=True, 
-    url="https://github.com/pjamesjoyce/lca_disclosures/",
-    download_url="https://github.com/pjamesjoyce/lca_disclosures/archive/0.1.0.tar.gz",
+    url="https://github.com/AntelopeLCA/lca_disclosures/",
     long_description=open('README.md').read(),
     description='Python based tools for working with LCA foreground model disclosures',
     keywords=['LCA', 'Life Cycle Assessment', 'Foreground system', 'Background system',
-              'Foreground model', 'Fully parameterised'],
+              'Foreground model'],
     classifiers=[
         'Intended Audience :: End Users/Desktop',
         'Intended Audience :: Developers',

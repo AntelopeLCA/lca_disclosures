@@ -1,19 +1,21 @@
-[![Build Status](https://travis-ci.org/pjamesjoyce/lca_disclosures.svg?branch=master)](https://travis-ci.org/pjamesjoyce/lca_disclosures)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/0iv7ounp1i9fq5g5?svg=true)](https://ci.appveyor.com/project/pjamesjoyce/lca-disclosures)
-[![Coverage Status](https://coveralls.io/repos/github/pjamesjoyce/lca_disclosures/badge.svg?branch=master)](https://coveralls.io/github/pjamesjoyce/lca_disclosures?branch=master)
-
 # lca_disclosures
 Python based tools for working with LCA foreground model disclosures
 
 Disclosure framework based on "Disclosure of product system models in life cycle assessment: achieving Transparency and Privacy" by Brandon Kuczenski in _J Ind Ecol_. (doi: [10.1111/jiec12810](https://doi.org/10.1111/jiec.12810))
 
+This package was originally authored by [James Joyce](https://github.com/pjamesjoyce).  Code and testing related to 
+[Brightway 2](https://brightway.dev) have been branched into the [lca_disclosures_bw2](https://github.com/AntelopeLCA/lca_disclosures_bw2) 
+repository so as to remove dependencies from the core program.  The original repository [lca_disclosures](https://github.com/pjamesjoyce/lca_disclosures)
+is still operational. 
+
 ## Supported software frameworks
 
 The `lca_disclosures` repository supports the generation of a disclosure specification from the following software:
  
- - Brightway2
- - lcopt
- - lca-tools (* pending migration)
+ - [lcopt](https://github.com/pjamesjoyce/lcopt)
+ - [Antelope Framework](https://github.com/AntelopeLCA/antelope) 
+
+Support (and testing) for Brightway2 is available in the original repository [lca_disclosures](https://github.com/pjamesjoyce/lca_disclosures).
   
 ### Usage
 
@@ -27,11 +29,9 @@ The disclosure object can also be serialized to JSON or saved as an Excel spread
 ### Requirements
 
  - `pandas`, to write to excel
- - `scipy` and `numpy`, to perform matrix operations
+ - `scipy`, to perform matrix operations
 
-Generally, any At the moment, the disclosure class requires `brightway2` and `lcopt` to be installed in order to run tests.  However, this could probably be phased out.  
-
-## Contents of an LCA Disclosure
+# Contents of an LCA Disclosure
 
 A disclosure has six parts, including three lists of flows:
 

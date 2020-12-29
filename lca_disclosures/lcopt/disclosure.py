@@ -1,6 +1,6 @@
 from ..base import BaseDisclosure
 from ..utils import matrix_to_data
-from ..flow_types import ForegroundFlow, BackgroundFlow, EmissionFlow
+# from ..flow_types import ForegroundFlow, BackgroundFlow, EmissionFlow  ## typed_flows not yet implemented
 
 
 import numpy as np
@@ -130,15 +130,17 @@ class LcoptDisclosure(BaseDisclosure):
             biosphere_ids.append((self.model.external_databases[e]['items'][b]))
         
         # final preparations
-        foreground_flows = [ForegroundFlow(x[1], 'Input', foreground_info[i]['unit'],
-                                           location=foreground_info[i]['location'])
-                            for i, x in enumerate(foreground)]
+        # typed_flows note: the objective is to phase out the hand-made list of names with an enumeration of typed flows
+        #   but this is not yet implemented for LCOPT and BW2 because of my lack of experience with them
+        # foreground_flows = [ForegroundFlow(x[1], 'Input', foreground_info[i]['unit'],
+        #                                    location=foreground_info[i]['location'])
+        #                     for i, x in enumerate(foreground)]
         foreground_names = [{'index': i,
                              'name': x[1],
                              'unit': foreground_info[i]['unit'],
                              'location': foreground_info[i]['location']}
                             for i, x in enumerate(foreground)]
-        technosphere_flows = [BackgroundFlow()]
+        # technosphere_flows = [BackgroundFlow()]
         technosphere_names = [{'index': i,
                                'ecoinvent_name': technosphere_info[i].get('name', 'n/a'),
                                'ecoinvent_id': technosphere_info[i].get('activity', 'n/a'),
