@@ -47,7 +47,7 @@ And three sparse matrix specifications:
 
 A visual representation of the disclosure is found in Figure 3 of the above paper:
 
-![Graphical depiction of an LCA disclosure]("https://github.com/AntelopeLCA/lca_disclosures/blob/master/jie-disclosure_fig3.png" =384x)
+<img alt="Graphical depiction of an LCA disclosure" src="https://github.com/AntelopeLCA/lca_disclosures/blob/master/jie-disclosure_fig3.png" width=384>
 
 ## Development
 
