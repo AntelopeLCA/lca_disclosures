@@ -1,5 +1,4 @@
 from .observer import ObservedFlow, RX, Observer
-from lcatools.interfaces import CONTEXT_STATUS_
 
 
 class ObservedForegroundFlow(ObservedFlow):
@@ -60,10 +59,7 @@ class ObservedEmissionFlow(ObservedForegroundFlow):
 
     @property
     def context(self):
-        if CONTEXT_STATUS_ == 'compat':
-            return self.flow['Compartment']
-        else:
-            return self._exch.termination
+        return self._exch.termination
 
 
 class ForegroundObserver(Observer):

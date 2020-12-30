@@ -5,10 +5,24 @@ To create the wheel run - python setup.py bdist_wheel
 from setuptools import setup, find_packages
 
 
+"""
+Revision History
+
+0.2.0rc1 - 2020 Dec 29 - Remove bw2 implementation to avoid unnecessary dependencies (unfortunately, the package still
+depends on scipy and pandas, neither of which are required by core Antelope)
+
+0.1.0 - 2018 Aug 03 - Original release by PJJ
+"""
+
+requirements = [
+    'scipy>=1.5.2',
+    'pandas>=1.1.2'
+]
+
 
 setup(
     name='lca_disclosures',
-    version="0.2.0",
+    version="0.2.0rc1",
     packages=find_packages(),
     author="Brandon Kuczenski",
     author_email="bkuczenski@ucsb.edu",
@@ -17,8 +31,7 @@ setup(
     #   'console_scripts': [
     #   ]
     #},
-    #install_requires=[
-    #],
+    install_requires=requirements,
     url="https://github.com/AntelopeLCA/lca_disclosures/",
     long_description=open('README.md').read(),
     description='Python based tools for working with LCA foreground model disclosures',

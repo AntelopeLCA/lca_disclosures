@@ -18,7 +18,7 @@ class ObservedFlow(object):
 
     ObservedFlows have several properties that must be implemented in subclasses:
      - parent --> the node in the graph from which the exchange is observed.
-     - flow --> the flow entity.  Assumed to have 'Name' property and unit() method
+     - flow --> the flow entity.  Assumed to have 'Name' property and unit method
      - direction --> relative to parent.
      - locale --> where the observation occurred
      - value --> the quantity of the exchange, relative to a unit activity of the parent
@@ -299,19 +299,19 @@ class Observer(object):
         _ = [x for x in self]  # ensure fully iterated
         p = len(self._fg)
 
-        d_i = [ForegroundFlow(off.flow['Name'], off.direction, off.flow.unit(), location=off.locale,
+        d_i = [ForegroundFlow(off.flow['Name'], off.direction, off.flow.unit, location=off.locale,
                               external_ref=off.external_ref)
                for off in self._fg.to_list()]  # this returns an ObservedForegroundFlow
-        d_i += [ForegroundFlow(flow['Name'], dirn, flow.unit(), location=locale, external_ref=flow.external_ref)
+        d_i += [ForegroundFlow(flow['Name'], dirn, flow.unit, location=locale, external_ref=flow.external_ref)
                 for flow, dirn, locale in self._co.to_list()]
 
-        d_ii = [BackgroundFlow(node.origin, flow['Name'], dirn, flow.unit(),
+        d_ii = [BackgroundFlow(node.origin, flow['Name'], dirn, flow.unit,
                                activity=node.external_ref,
                                location=node['SpatialScope'],
                                external_ref=flow.external_ref)
                 for node, flow, dirn in self._bg.to_list()]
 
-        d_iii = [EmissionFlow(flow.origin, flow['Name'], dirn, flow.unit(),
+        d_iii = [EmissionFlow(flow.origin, flow['Name'], dirn, flow.unit,
                               context='; '.join(context),
                               location=locale,
                               external_ref=flow.external_ref)

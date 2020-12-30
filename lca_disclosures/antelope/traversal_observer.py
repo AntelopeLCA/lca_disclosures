@@ -36,7 +36,6 @@ its OFF without knowing its FFID.
 
 from collections import deque
 from .observer import Observer, ObservedFlow, RX
-from lcatools.interfaces import CONTEXT_STATUS_
 
 
 class EmptyFragQueue(Exception):
@@ -93,10 +92,7 @@ class ObservedExchange(ObservedFlow):
 
     @property
     def context(self):
-        if CONTEXT_STATUS_ == 'compat':
-            return self.flow['Compartment']
-        else:
-            return self._exch.termination
+        return self._exch.termination
 
 
 class ObservedFragmentFlow(ObservedFlow):
@@ -491,7 +487,7 @@ class TraversalObserver(Observer):
                     self._defer(off)
             else:
                 # add unobserved exchanges--
-                for x in off.ff.term._unobserved_exchanges():
+                for x in off.ff.term._unobserved_exchanges():  # another argument to expose unobserved_exchanges
                     emf = ObservedExchange(x, off)
                     self._add_emission(emf)
 
