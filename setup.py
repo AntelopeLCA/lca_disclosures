@@ -26,17 +26,13 @@ setup(
     packages=find_packages(),
     author="Brandon Kuczenski",
     author_email="bkuczenski@ucsb.edu",
-    license=open('LICENSE').read(),
-    #entry_points = {
-    #   'console_scripts': [
-    #   ]
-    #},
+    long_description_content_type='text/markdown',
+    license='BSD 3-Clause',
     install_requires=requirements,
     url="https://github.com/AntelopeLCA/lca_disclosures/",
     long_description=open('README.md').read(),
     description='Python based tools for working with LCA foreground model disclosures',
-    keywords=['LCA', 'Life Cycle Assessment', 'Foreground system', 'Background system',
-              'Foreground model'],
+    keywords=['LCA', 'Life Cycle Assessment', 'Foreground system', 'Background system', 'Foreground model'],
     classifiers=[
         'Intended Audience :: End Users/Desktop',
         'Intended Audience :: Developers',
